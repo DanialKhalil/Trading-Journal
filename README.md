@@ -1,0 +1,2 @@
+# Trading-Journal
+ Group2
