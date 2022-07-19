@@ -38,11 +38,14 @@ height= window.winfo_screenheight()
 def add_task():
     task = de_instrument.get()
     task1 = de_market_position.get()
-    if task != "" and task1 != "":
-        textboxarea.insert(tkinter.END, task)
-        textboxarea.insert(tkinter.END, task1)
+    task2 = de_LOT_SIZE.get()
+    if task != "" and task1 != ""and task2 !="":
+        textboxarea.insert(tkinter.END,task)
+        textboxarea.insert(tkinter.END,task1)
+        textboxarea.insert(tkinter.END,task2)
         de_instrument.delete(0, tkinter.END)
         de_market_position.delete(0, tkinter.END)
+        de_LOT_SIZE.delete(0,tkinter.END)
     else:
         tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
 
