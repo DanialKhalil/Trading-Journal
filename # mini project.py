@@ -125,10 +125,8 @@ textboxarea.pack()
 window.mainloop() #mainloop // kalau mainloop tak ada coding tak jalan
 #last try
 #pundek punya github
-<<<<<<< HEAD
+
 #try
-=======
 #tambah ayat
 #akjsnxkanskjxdnkasjnx
 #iman hensem
->>>>>>> acab9d29502aefefa1cef9c31b3cb48fb1f3ec58
