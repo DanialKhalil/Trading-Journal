@@ -127,3 +127,4 @@ window.mainloop() #mainloop // kalau mainloop tak ada coding tak jalan
 #pundek punya github
 #tambah ayat
 #akjsnxkanskjxdnkasjnx
+#iman hensem
