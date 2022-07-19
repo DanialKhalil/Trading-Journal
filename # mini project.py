@@ -3,6 +3,7 @@ from ast import Lambda
 from cProfile import label
 from calendar import c
 from cgitb import text
+import sqlite3
 from tkinter import *
 from tkinter import ttk
 from tkinter.tix import TEXT
@@ -37,6 +38,42 @@ height= window.winfo_screenheight()
 # START FRAME ADDJOURNAL ______________________________________________________________________________
   # START fuction in add journal----------------------------------------------------
 space0=" "
+
+def reverse(tuples):
+    new_tup = tuples[::-1]
+    return new_tup
+
+def insert_data():
+    itemde_instrument = str(de_instrument.get())
+    itemde_market_position = str(de_market_position.get())
+    itemde_LOT_SIZE = str(de_LOT_SIZE.get())
+    itemde_RISK = str(de_RISK.get())
+    itemde_REWARD = str(de_REWARD.get())
+    itemde_PROFIT = str(de_PROFIT.get())
+    itemde_LOSS = str(de_LOSS.get())
+    itemde_SETUP = str(de_SETUP.get())
+
+    if itemde_instrument != "" and itemde_market_position != ""and itemde_LOT_SIZE != ""and itemde_RISK != ""and itemde_REWARD != ""and itemde_PROFIT != ""and itemde_LOSS != ""and itemde_SETUP != "":
+        textboxarea.insert(tkinter.END,itemde_instrument +space0 +itemde_market_position +space0 +itemde_LOT_SIZE 
+                                        +space0 +itemde_RISK +space0 +itemde_REWARD +space0 
+                                        +itemde_PROFIT +space0 +itemde_LOSS +space0 +itemde_SETUP+time.strftime("%H:%M:%S %p \n%A %x"))
+        insert(itemde_instrument,itemde_market_position,itemde_LOT_SIZE,itemde_RISK,itemde_REWARD,itemde_PROFIT,itemde_LOSS,itemde_SETUP)
+    else:
+        tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
+
+    conn = sqlite3.connect("tradingjournaldatabase.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""CREATE TABLE IF NOT EXISTS 
+    tradingjournaldatabase(Instrument TEXT, market_position TEXT, LOT_SIZE TEXT, RISK TEXT,REWARD TEXT, PROFIT TEXT, LOSS TEXT, SETUP TEXT)""")
+
+    
+    cursor.execute("INSERT INTO tradingjournaldatabase VALUES ('" + str(itemde_instrument) + "','" + str(itemde_market_position)
+                                                 + "','" + str(itemde_LOT_SIZE) + "','" + str(itemde_RISK) + "','" + str(itemde_REWARD) 
+                                                 + "','" + str(itemde_PROFIT) + "','" + str(itemde_LOSS) + "','" + str(itemde_SETUP) + "')")
+    conn.commit()
+
+
 def add_task():
     task = de_instrument.get()
     task1 = de_market_position.get()
@@ -50,6 +87,7 @@ def add_task():
         textboxarea.insert(tkinter.END,task +space0 +task1 +space0 +task2 
                                         +space0 +task3 +space0 +task4 +space0 
                                         +task5 +space0 +task6 +space0 +task7+time.strftime("%H:%M:%S %p \n%A %x"))
+        
     else:
         tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
 def clear():
@@ -61,6 +99,8 @@ def clear():
     de_PROFIT.delete(0, tkinter.END)
     de_LOSS.delete(0, tkinter.END)
     de_SETUP.delete(0, tkinter.END)
+
+
  # END fuction in add journal----------------------------------------------------
 
 
@@ -113,7 +153,7 @@ de_SETUP.grid(row=7,column=1)
 
 
 # START button in ADDJOURNAL-------------------------
-submitbutton= Button(ADDJOURNAL,text='Submit',bg='pink',command=add_task) #tak buat command lagi
+submitbutton= Button(ADDJOURNAL,text='Submit',bg='pink',command=insert_data) #tak buat command lagi
 submitbutton.grid(row=8,column=1,sticky=N)
 
 clearbutton= Button(ADDJOURNAL,text='Clear',bg='pink',command=clear) #tak buat command lagi
@@ -187,21 +227,31 @@ my_tree = ttk.Treeview(JOURNAL) # YANG PATUT KAT ATAS !!!!!!!!!!!!!!!!!!!!!!!!!!
 style = ttk.Style()
 style.configure("Treeview.Heading", font=('Arial bold', 15))
 
-my_tree['columns'] = ("Instrument", "Name", "Price", "Quantity")
+my_tree['columns'] = ("Instrument", "market_position", "LOT_SIZE", "RISK", "REWARD", "PROFIT", "LOSS", "SETUP")
 my_tree.column("#0", width=0, stretch=NO)
 my_tree.column("Instrument", anchor=W, width=200)
-my_tree.column("Name", anchor=W, width=200)
-my_tree.column("Price", anchor=W, width=150)
-my_tree.column("Quantity", anchor=W, width=150)
+my_tree.column("market_position", anchor=W, width=200)
+my_tree.column("LOT_SIZE", anchor=W, width=150)
+my_tree.column("RISK", anchor=W, width=150)
+my_tree.column("REWARD", anchor=W, width=200)
+my_tree.column("PROFIT", anchor=W, width=200)
+my_tree.column("LOSS", anchor=W, width=150)
+my_tree.column("SETUP", anchor=W, width=150)
+
+
 my_tree.heading("Instrument", text="Instrument", anchor=W)
-my_tree.heading("Name", text="Name", anchor=W)
-my_tree.heading("Price", text="Price", anchor=W)
-my_tree.heading("Quantity", text="Quantity", anchor=W)
+my_tree.heading("market_position", text="market_position", anchor=W)
+my_tree.heading("LOT_SIZE", text="LOT_SIZE", anchor=W)
+my_tree.heading("RISK", text="RISK", anchor=W)
+my_tree.heading("REWARD", text="REWARD", anchor=W)
+my_tree.heading("PROFIT", text="PROFIT", anchor=W)
+my_tree.heading("LOSS", text="LOSS", anchor=W)
+my_tree.heading("SETUP", text="SETUP", anchor=W)
 
 my_tree.tag_configure('orow', background='#EEEEEE', font=('Arial bold', 15))
 my_tree.grid(row=1, column=5, columnspan=4, rowspan=5, padx=10, pady=10)
 # END FRAME JOURNAL__________________________________________________________________________
-    
+     
     
 
 digital_clock()
