@@ -128,3 +128,4 @@ window.mainloop() #mainloop // kalau mainloop tak ada coding tak jalan
 #tambah ayat
 #akjsnxkanskjxdnkasjnx
 #iman hensem
+#danialhensem
