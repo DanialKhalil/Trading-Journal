@@ -48,7 +48,7 @@ def add_task():
     if task != "" and task1 != "":
         textboxarea.insert(tkinter.END,task +space0 +task1 +space0 +task2 
                                         +space0 +task3 +space0 +task4 +space0 
-                                        +task5 +space0 +task6 +space0 +task7)
+                                        +task5 +space0 +task6 +space0 +task7+time.strftime("%H:%M:%S %p \n%A %x"))
     else:
         tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
 def clear():
