@@ -207,3 +207,4 @@ my_tree.grid(row=1, column=5, columnspan=4, rowspan=5, padx=10, pady=10)
 digital_clock()
 window.mainloop() #mainloop // kalau mainloop tak ada coding tak jalan
 #SAJA
+#biasa
