@@ -35,22 +35,31 @@ height= window.winfo_screenheight()
 
 # START FRAME ADDJOURNAL ______________________________________________________________________________
   # START fuction in add journal----------------------------------------------------
+space0=" "
 def add_task():
     task = de_instrument.get()
     task1 = de_market_position.get()
     task2 = de_LOT_SIZE.get()
-    if task != "" and task1 != ""and task2 !="":
-        textboxarea.insert(tkinter.END,task)
-        textboxarea.insert(tkinter.END,task1)
-        textboxarea.insert(tkinter.END,task2)
-        de_instrument.delete(0, tkinter.END)
-        de_market_position.delete(0, tkinter.END)
-        de_LOT_SIZE.delete(0,tkinter.END)
+    task3 = de_RISK.get()
+    task4 = de_REWARD.get()
+    task5 = de_PROFIT.get()
+    task6 = de_LOSS.get()
+    task7 = de_SETUP.get()
+    if task != "" and task1 != "":
+        textboxarea.insert(tkinter.END,task +space0 +task1 +space0 +task2 
+                                        +space0 +task3 +space0 +task4 +space0 
+                                        +task5 +space0 +task6 +space0 +task7)
     else:
         tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
-
-    
-   
+def clear():
+    de_instrument.delete(0, tkinter.END)
+    de_market_position.delete(0, tkinter.END)
+    de_LOT_SIZE.delete(0, tkinter.END)
+    de_RISK.delete(0, tkinter.END)
+    de_REWARD.delete(0, tkinter.END)
+    de_PROFIT.delete(0, tkinter.END)
+    de_LOSS.delete(0, tkinter.END)
+    de_SETUP.delete(0, tkinter.END)
  # END fuction in add journal----------------------------------------------------
 
 
@@ -106,7 +115,7 @@ de_SETUP.grid(row=7,column=1)
 submitbutton= Button(ADDJOURNAL,text='Submit',bg='pink',command=add_task) #tak buat command lagi
 submitbutton.grid(row=8,column=1,sticky=N)
 
-clearbutton= Button(ADDJOURNAL,text='Clear',bg='pink') #tak buat command lagi
+clearbutton= Button(ADDJOURNAL,text='Clear',bg='pink',command=clear) #tak buat command lagi
 clearbutton.grid(row=8,column=1,sticky=W)
 # END button in ADDJOURNAL-------------------------
 
@@ -169,7 +178,7 @@ label_comment.pack(side=LEFT)
 JOURNAL = LabelFrame(window, highlightbackground="gray23", highlightthickness=1,text='JOURNAL HISTORY IMAN POWER',bg='wheat1')
 JOURNAL.grid(row=2,column=0,columnspan=3,padx=10)    # Frame for PERFOMANCE BOARDDASH
 
-textboxarea=Text(JOURNAL,height=25,width=100,bg='wheat1')
+textboxarea=Listbox(JOURNAL,height=25,width=100,bg='wheat1',font=('ARIAL',12))
 textboxarea.pack()
 
 # END FRAME JOURNAL__________________________________________________________________________
