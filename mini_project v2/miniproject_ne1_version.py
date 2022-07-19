@@ -55,7 +55,7 @@ class journal:
             sd = journal.get(searchStd)
 
             self.txtinstrument.delete(0, END)
-            self.txtinstrument.insert(END, +sd[1])
+            self.txtinstrument.insert(END, sd[1])
             self.txtmarket_position.delete(0, END)
             self.txtmarket_position.insert(END, sd[2])
             self.txtLOT_SIZE.delete(0, END)
