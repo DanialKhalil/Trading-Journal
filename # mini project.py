@@ -4,6 +4,7 @@ from cProfile import label
 from calendar import c
 from cgitb import text
 from tkinter import *
+from tkinter import ttk
 from tkinter.tix import TEXT
 from turtle import bgcolor, right
 import time
@@ -178,9 +179,27 @@ label_comment.pack(side=LEFT)
 JOURNAL = LabelFrame(window, highlightbackground="gray23", highlightthickness=1,text='JOURNAL HISTORY IMAN POWER',bg='wheat1')
 JOURNAL.grid(row=2,column=0,columnspan=3,padx=10)    # Frame for PERFOMANCE BOARDDASH
 
-textboxarea=Listbox(JOURNAL,height=25,width=100,bg='wheat1',font=('ARIAL',12))
-textboxarea.pack()
+textboxarea=Listbox(JOURNAL,height=25,width=50,bg='wheat1',font=('ARIAL',12))
+textboxarea.grid(row=2,column=0,columnspan=3,padx=10)
 
+my_tree = ttk.Treeview(JOURNAL) # YANG PATUT KAT ATAS !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+style = ttk.Style()
+style.configure("Treeview.Heading", font=('Arial bold', 15))
+
+my_tree['columns'] = ("Instrument", "Name", "Price", "Quantity")
+my_tree.column("#0", width=0, stretch=NO)
+my_tree.column("Instrument", anchor=W, width=200)
+my_tree.column("Name", anchor=W, width=200)
+my_tree.column("Price", anchor=W, width=150)
+my_tree.column("Quantity", anchor=W, width=150)
+my_tree.heading("Instrument", text="Instrument", anchor=W)
+my_tree.heading("Name", text="Name", anchor=W)
+my_tree.heading("Price", text="Price", anchor=W)
+my_tree.heading("Quantity", text="Quantity", anchor=W)
+
+my_tree.tag_configure('orow', background='#EEEEEE', font=('Arial bold', 15))
+my_tree.grid(row=1, column=5, columnspan=4, rowspan=5, padx=10, pady=10)
 # END FRAME JOURNAL__________________________________________________________________________
     
     
