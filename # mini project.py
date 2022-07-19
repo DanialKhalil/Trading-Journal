@@ -133,3 +133,4 @@ window.mainloop() #mainloop // kalau mainloop tak ada coding tak jalan
 
 #danialhensem
 #zairie
+#0283838383838
