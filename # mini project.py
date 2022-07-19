@@ -16,7 +16,7 @@ foreground= "#363529"
 border_width = 1
 
 def digital_clock(): 
-   time_live = time.strftime("%H:%M:%S")
+   time_live = time.strftime("%H:%M:%S %p \n%A %x")
    clock.config(text=time_live) 
    clock.after(2000, digital_clock)
 
