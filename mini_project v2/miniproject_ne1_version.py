@@ -28,7 +28,7 @@ class journal:
         def cleardatabase():
             icleardatabase = tkinter.messagebox.askyesno("trading journal Database Systems", "Confirm if you want to clear database")
             if icleardatabase > 0:
-                pass
+                database_config.cleardatabase()
                 return
         
         def iExit():

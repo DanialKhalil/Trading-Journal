@@ -81,6 +81,12 @@ def sumofloss():
     else:
         return(x)
 
+def cleardatabase ():
+    con = sqlite3.connect("journal.db")
+    cur = con.cursor()
+    cur.execute("DELETE from journal")
+    con.commit()
+
 journalData()
 sum()
 sumofloss()
