@@ -1,4 +1,6 @@
 #frontend
+from cProfile import label
+from cgitb import text
 from tkinter import *
 import tkinter.messagebox
 from tkinter.tix import Select
@@ -24,12 +26,11 @@ class journal:
         loss = StringVar()
         setup = StringVar()
 # --------------------------------------FUNCTIONS-------------------------------------------------------------------
-        
-        def cleardatabase():
-            icleardatabase = tkinter.messagebox.askyesno("trading journal Database Systems", "Confirm if you want to clear database")
-            if icleardatabase > 0:
-                database_config.cleardatabase()
-                return
+        def reload():
+            label_d_PROFIT.config(text=database_config.sum())
+            label_d_loss.config(text=database_config.sumofloss())
+            label_d_totalprofitloss.config(text=database_config.sum()-database_config.sumofloss())
+
         
         def iExit():
             iExit = tkinter.messagebox.askyesno("trading journal Database Systems", "Confirm if you want to exit")
@@ -53,11 +54,12 @@ class journal:
                     journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
             else :
                 tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
-
+            reload()
         def DisplayData():
             journal.delete(0,END)
             for row in database_config.viewData():
                 journal.insert(END, row, str(""))
+            reload()
 
         def JOURNALRec(event):
             global sd
@@ -80,18 +82,18 @@ class journal:
             self.txtLOSS.insert(END, sd[7])
             self.txtSETUP.delete(0, END)
             self.txtSETUP.insert(END, sd[8])
-
+            reload()
         def DeleteData():
             if(len(instrument.get())!=0):
                 database_config.deleteRec(sd[0])
                 clearData()
                 DisplayData()
-
+            reload()
         def searchDatabase():
             journal.delete(0,END)
             for row in database_config.searchData(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get()):
                 journal.insert(END, row, str(""))
-
+            
         def update():
             if instrument.get() !="" and market_position.get()!="" and lot_size.get() !="" and risk.get() !="" and reward.get() !="" and profit.get() !="" and loss.get()!="" and setup.get()!="":
                 if (len(market_position.get()) != 0):
@@ -116,7 +118,15 @@ class journal:
 
         # END clock config________________________________________
 
-        
+        def cleardatabase():
+            icleardatabase = tkinter.messagebox.askyesno("trading journal Database Systems", "Confirm if you want to clear database")
+            if icleardatabase > 0:
+                database_config.cleardatabase()
+                reload()
+                clearData()
+                journal.delete(0, END)
+                return
+            
             
 
 #--------------------------------------Frames-----------------------------------------------------------------------__________________________________________________________
@@ -159,8 +169,8 @@ class journal:
         labelLOSS.pack()
 
         data_totalloss=database_config.sumofloss()
-        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalloss,width=50,font=25,bg='wheat1')
-        label_d_PROFIT.pack()
+        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=50,font=25,bg='wheat1')
+        label_d_loss.pack()
             #___________________________________________________
 
 
@@ -169,8 +179,8 @@ class journal:
         labelTPL.pack()
 
         data_totalprofit_loss=data_totalprofit-data_totalloss
-        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=50,font=25,bg='wheat1')
-        label_d_PROFIT.pack()
+        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=50,font=25,bg='wheat1')
+        label_d_totalprofitloss.pack()
             #___________________________________________________
 
 
@@ -256,14 +266,15 @@ class journal:
         self.btnExit = Button(ButtonFrame, text="clear database", font=('times new roman', 10, 'bold'), height=1, width=15, bd=4, command=cleardatabase)
         self.btnExit.grid(row=0, column=7)
 
+
         digital_clock()
+        
 
 
 
 root = Tk()
 application = journal(root)
-database_config.sum()
-database_config.sumofloss()
+
 root.mainloop()
 
 
