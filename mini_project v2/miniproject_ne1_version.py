@@ -53,7 +53,7 @@ class journal:
                     journal.delete(0, END)
                     journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
             else :
-                tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
+                tkinter.messagebox.showerror(title="Warning!", message="please fill all")
             reload()
         def DisplayData():
             journal.delete(0,END)
