@@ -39,10 +39,13 @@ class journal:
             self.txtLOSS.delete(0, END)
             self.txtSETUP.delete(0, END)
         def addData():
-            if(len(instrument.get())!=0):
-                database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get())
-                journal.delete(0, END)
-                journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
+            if instrument.get() !="" and market_position.get()!="" and lot_size.get() !="" and risk.get() !="" and reward.get() !="" and profit.get() !="" and loss.get()!="" and setup.get()!="":
+                if(len(instrument.get())!=0):
+                    database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get())
+                    journal.delete(0, END)
+                    journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
+            else :
+                tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
 
         def DisplayData():
             journal.delete(0,END)
