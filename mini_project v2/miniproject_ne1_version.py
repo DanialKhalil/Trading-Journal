@@ -24,6 +24,13 @@ class journal:
         loss = StringVar()
         setup = StringVar()
 # --------------------------------------FUNCTIONS-------------------------------------------------------------------
+        
+        def cleardatabase():
+            icleardatabase = tkinter.messagebox.askyesno("trading journal Database Systems", "Confirm if you want to clear database")
+            if icleardatabase > 0:
+                pass
+                return
+        
         def iExit():
             iExit = tkinter.messagebox.askyesno("trading journal Database Systems", "Confirm if you want to exit")
             if iExit > 0:
@@ -86,13 +93,15 @@ class journal:
                 journal.insert(END, row, str(""))
 
         def update():
-            if (len(market_position.get()) != 0):
-                database_config.deleteRec(sd[0])
-            if (len(market_position.get()) != 0):
-                database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(),loss.get(), setup.get())
-                journal.delete(0, END)
-                journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
-
+            if instrument.get() !="" and market_position.get()!="" and lot_size.get() !="" and risk.get() !="" and reward.get() !="" and profit.get() !="" and loss.get()!="" and setup.get()!="":
+                if (len(market_position.get()) != 0):
+                    database_config.deleteRec(sd[0])
+                if (len(market_position.get()) != 0):
+                    database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(),loss.get(), setup.get())
+                    journal.delete(0, END)
+                    journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
+            else :
+                tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
         # start clock config________________________________________
 
         text_font= ("Boulder", 18, 'bold')
@@ -243,6 +252,9 @@ class journal:
 
         self.btnExit = Button(ButtonFrame, text="Exit", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4, command=iExit)
         self.btnExit.grid(row=0, column=6)
+
+        self.btnExit = Button(ButtonFrame, text="clear database", font=('times new roman', 10, 'bold'), height=1, width=15, bd=4, command=cleardatabase)
+        self.btnExit.grid(row=0, column=7)
 
         digital_clock()
 
