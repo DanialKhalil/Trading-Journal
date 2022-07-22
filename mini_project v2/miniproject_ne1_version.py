@@ -48,10 +48,14 @@ class journal:
             self.txtSETUP.delete(0, END)
         def addData():
             if instrument.get() !="" and market_position.get()!="" and lot_size.get() !="" and risk.get() !="" and reward.get() !="" and profit.get() !="" and loss.get()!="" and setup.get()!="":
-                if(len(instrument.get())!=0):
-                    database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get())
-                    journal.delete(0, END)
-                    journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
+                L=market_position.get()
+                if L.upper()=='BUY' or L.upper()=="SELL" :
+                    if(len(instrument.get())!=0):
+                        database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get())
+                        journal.delete(0, END)
+                        journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
+                else:
+                    tkinter.messagebox.showerror(title="Warning!", message="input position only 'buy' or 'sell'")
             else :
                 tkinter.messagebox.showerror(title="Warning!", message="please fill all")
             reload()
