@@ -139,9 +139,9 @@ class journal:
         ButtonFrame.grid(row=2,column=0)
         DataFrame = Frame(MainFrame, bd=1, width=1500, height=800, padx=20, pady=20, relief=RIDGE,bg="pink")
         DataFrame.grid(row=1,column=0)
-        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=160,relief=RIDGE,bg="Ghost White", font=('times new roman',30,'bold'),text="ADD JOURNAL\n")
+        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=190,relief=RIDGE,bg="Ghost White", font=('times new roman',30,'bold'),text="ADD JOURNAL\n")
         DataFrameLEFT.pack(side=LEFT)
-        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=170, pady=3, relief=RIDGE,bg="Ghost White",font=('times new roman',21,'bold'),text="JOURNAL\n")
+        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=140, pady=3, relief=RIDGE,bg="Ghost White",font=('times new roman',21,'bold'),text="JOURNAL\n")
         DataFrameRIGHT.pack(side=RIGHT)
 
         
@@ -155,11 +155,11 @@ class journal:
         clock.pack()
 
             #total profit_______________________________________
-        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=50,font=25,bg='wheat1')
+        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=40,font=25,bg='wheat1')
         labelPROFIT.pack()
 
         data_totalprofit=database_config.sum()
-        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=50,font=25,bg='wheat1')
+        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=40,font=25,bg='wheat1')
         label_d_PROFIT.pack()
         
 
@@ -168,7 +168,7 @@ class journal:
         labelLOSS.pack()
 
         data_totalloss=database_config.sumofloss()
-        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=50,font=25,bg='wheat1')
+        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=40,font=25,bg='wheat1')
         label_d_loss.pack()
             #___________________________________________________
 
@@ -236,7 +236,7 @@ class journal:
         scrollbar= Scrollbar(DataFrameRIGHT)
         scrollbar.grid(row=0,column=1,sticky='ns')
 
-        journal = Listbox(DataFrameRIGHT, width=40, height=10, font=('times new roman', 12, 'bold'),yscrollcommand=scrollbar.set)
+        journal = Listbox(DataFrameRIGHT, width=55, height=10, font=('times new roman', 12, 'bold'),yscrollcommand=scrollbar.set)
         journal.bind('<<ListboxSelect>>',JOURNALRec)
         journal.grid(row=0, column=0, padx=2)
         scrollbar.config(command=journal.yview)
