@@ -139,9 +139,9 @@ class journal:
         ButtonFrame.grid(row=2,column=0)
         DataFrame = Frame(MainFrame, bd=1, width=1500, height=800, padx=20, pady=20, relief=RIDGE,bg="pink")
         DataFrame.grid(row=1,column=0)
-        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=20,relief=RIDGE,bg="Ghost White", font=('times new roman',26,'bold'),text="ADD JOURNAL\n")
+        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=150,relief=RIDGE,bg="Ghost White", font=('times new roman',30,'bold'),text="ADD JOURNAL\n")
         DataFrameLEFT.pack(side=LEFT)
-        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=31, pady=3, relief=RIDGE,bg="Ghost White",font=('times new roman',20,'bold'),text="JOURNAL\n")
+        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=105, pady=3, relief=RIDGE,bg="Ghost White",font=('times new roman',21,'bold'),text="JOURNAL\n")
         DataFrameRIGHT.pack(side=RIGHT)
 
         
