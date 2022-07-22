@@ -16,6 +16,7 @@ class journal:
         self.root.title("TRADING JOURNAL")
         self.root.geometry("1350x750")
         self.root.config(bg="wheat1")
+        self.root.ico
 
         instrument = StringVar()
         market_position = StringVar()
