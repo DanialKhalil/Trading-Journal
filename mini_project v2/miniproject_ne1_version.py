@@ -9,12 +9,12 @@ import time
 
 
 
-class journal:
+class journal: 
 
     def __init__(self,root):
         self.root =root
         self.root.title("TRADING JOURNAL")
-        self.root.geometry("1350x750+0+0")
+        self.root.geometry("1350x750")
         self.root.config(bg="wheat1")
 
         instrument = StringVar()
@@ -60,7 +60,6 @@ class journal:
             for row in database_config.viewData():
                 journal.insert(END, row, str(""))
             reload()
-
         def JOURNALRec(event):
             global sd
             searchStd= journal.curselection()[0]
@@ -107,7 +106,7 @@ class journal:
         # start clock config________________________________________
 
         text_font= ("Boulder", 18, 'bold')
-        background = "pink"
+        background = "wheat1"
         foreground= "#363529"
         border_width = 1
 
@@ -268,7 +267,7 @@ class journal:
 
 
         digital_clock()
-        
+    
 
 
 
