@@ -111,7 +111,7 @@ class journal:
         # start clock config________________________________________
 
         text_font= ("Boulder", 18, 'bold')
-        background = "pink"
+        background = "steel blue"
         foreground= "#363529"
         border_width = 1
 
@@ -134,25 +134,25 @@ class journal:
             
 
 #--------------------------------------Frames-----------------------------------------------------------------------__________________________________________________________
-        MainFrame = Frame(self.root, bg="wheat1")
+        MainFrame = Frame(self.root, bg="gray50")
         MainFrame.grid()
-        TitFrame = Frame(MainFrame, bd=2, padx=54,pady=8, bg="wheat1", relief=RIDGE)
+        TitFrame = Frame(MainFrame, bd=2, padx=54,pady=8, bg="steel blue", relief=RIDGE)
         TitFrame.grid(row=0,column=0)
-        self.lblTit = Label(TitFrame ,font=('times new roman',48,'bold'),text="TRADING JOURNAL IKAN BILIS FX",bg="wheat1")
+        self.lblTit = Label(TitFrame ,font=('times new roman',48,'bold'),text="TRADING JOURNAL IKAN BILIS FX",bg="gray50")
         self.lblTit.grid(row=0,column=0)
-        ButtonFrame =Frame(MainFrame,bd=2,width=1350,height=70,padx=19,pady=10,bg="Ghost White",relief =RIDGE)
+        ButtonFrame =Frame(MainFrame,bd=2,width=1350,height=70,padx=19,pady=10,bg="gray50",relief =RIDGE)
         ButtonFrame.grid(row=2,column=0)
-        DataFrame = Frame(MainFrame, bd=1, width=1500, height=800, padx=20, pady=20, relief=RIDGE,bg="pink")
+        DataFrame = Frame(MainFrame, bd=1, width=1500, height=800, padx=20, pady=20, relief=RIDGE,bg="gray50")
         DataFrame.grid(row=1,column=0)
-        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=20,relief=RIDGE,bg="Ghost White", font=('times new roman',26,'bold'),text="ADD JOURNAL\n")
+        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=20,relief=RIDGE,bg="steel blue", font=('times new roman',26,'bold'),text="\tADD JOURNAL\n")
         DataFrameLEFT.pack(side=LEFT)
-        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=31, pady=3, relief=RIDGE,bg="Ghost White",font=('times new roman',20,'bold'),text="JOURNAL\n")
+        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=31, pady=3, relief=RIDGE,bg="steel blue",font=('times new roman',20,'bold'),text="\t\tJOURNAL\n")
         DataFrameRIGHT.pack(side=RIGHT)
 
         
         # START FRAME DASHBOARDPERFOMANCE________________________________________________________________________
 
-        FRAMEPERFOMANCE = LabelFrame(MainFrame, highlightbackground="gray23", highlightthickness=1,text='DASH BOARDPERFOMANCE',bg='wheat1')
+        FRAMEPERFOMANCE = LabelFrame(MainFrame, highlightbackground="snow", highlightthickness=1,text='DASH BOARDPERFOMANCE',bg='steel blue')
         FRAMEPERFOMANCE.grid(row=3,column=0,padx=10)    # Frame for PERFOMANCE BOARDDASH
 
             #clock
@@ -160,30 +160,30 @@ class journal:
         clock.pack()
 
             #total profit_______________________________________
-        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=50,font=25,bg='wheat1')
+        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=50,font=25,bg='steel blue')
         labelPROFIT.pack()
 
         data_totalprofit=database_config.sum()
-        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=50,font=25,bg='wheat1')
+        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=50,font=25,bg='steel blue')
         label_d_PROFIT.pack()
         
 
             #total loss_______________________________________
-        labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='wheat1')
+        labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='steel blue')
         labelLOSS.pack()
 
         data_totalloss=database_config.sumofloss()
-        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=50,font=25,bg='wheat1')
+        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=50,font=25,bg='steel blue')
         label_d_loss.pack()
             #___________________________________________________
 
 
             #total profit - loss_______________________________________
-        labelTPL=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT - LOSS ',font=25,bg='wheat1')
+        labelTPL=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT - LOSS ',font=25,bg='steel blue')
         labelTPL.pack()
 
         data_totalprofit_loss=data_totalprofit-data_totalloss
-        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=50,font=25,bg='wheat1')
+        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=50,font=25,bg='steel blue')
         label_d_totalprofitloss.pack()
             #___________________________________________________
 
