@@ -140,13 +140,13 @@ class journal:
         TitFrame.grid(row=0,column=0)
         self.lblTit = Label(TitFrame ,font=('times new roman',48,'bold'),text="TRADING JOURNAL IKAN BILIS FX",bg="gray50")
         self.lblTit.grid(row=0,column=0)
-        ButtonFrame =Frame(MainFrame,bd=2,width=1350,height=70,padx=19,pady=10,bg="gray50",relief =RIDGE)
+        ButtonFrame =Frame(MainFrame,bd=2,width=1350,height=70,padx=19,pady=8,bg="gray50",relief =RIDGE)
         ButtonFrame.grid(row=2,column=0)
         DataFrame = Frame(MainFrame, bd=1, width=1500, height=800, padx=20, pady=20, relief=RIDGE,bg="gray50")
         DataFrame.grid(row=1,column=0)
-        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=20,relief=RIDGE,bg="steel blue", font=('times new roman',26,'bold'),text="\tADD JOURNAL\n")
+        DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=190,relief=RIDGE,bg="steel blue", font=('times new roman',36,'bold'),text="\tADD JOURNAL\n")
         DataFrameLEFT.pack(side=LEFT)
-        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=31, pady=3, relief=RIDGE,bg="steel blue",font=('times new roman',20,'bold'),text="\t\tJOURNAL\n")
+        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=140, pady=3, relief=RIDGE,bg="steel blue",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
         DataFrameRIGHT.pack(side=RIGHT)
 
         
@@ -188,7 +188,7 @@ class journal:
             #___________________________________________________
 
 
-        SPACE=Label(FRAMEPERFOMANCE,text=" US DOLLAR $ ",font=('ARIAL',10),bg='wheat1')
+        SPACE=Label(FRAMEPERFOMANCE,text=" US DOLLAR $ ",font=('ARIAL',10),bg='steel blue')
         SPACE.pack()
 
 
