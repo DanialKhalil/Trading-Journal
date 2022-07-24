@@ -9,11 +9,12 @@ from tkinter.tix import Select
 import database_config
 import time
 
-
+#----------------------------------------------xjadi lgi image---------------------------------------
 load= Image.open("\Users\dmuhd\Pictures.png")
 render = ImageTk.PhotoImage(load)
 img = Label(root, image=render)
 img.place(x=100, y=100)
+#--------------------------------------------------------------------------------------------------
 class journal:
 
     def __init__(self,root):
