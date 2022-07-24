@@ -1,14 +1,19 @@
 #frontend
 from cProfile import label
 from cgitb import text
+from email.mime import image
 from tkinter import *
+from PIL import ImageTk, Image
 import tkinter.messagebox
 from tkinter.tix import Select
 import database_config
 import time
 
 
-
+load= Image.open("\Users\dmuhd\Pictures.png")
+render = ImageTk.PhotoImage(load)
+img = Label(root, image=render)
+img.place(x=100, y=100)
 class journal:
 
     def __init__(self,root):
