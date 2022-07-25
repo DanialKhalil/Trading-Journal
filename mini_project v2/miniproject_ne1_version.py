@@ -2,18 +2,40 @@
 from cProfile import label
 from cgitb import text
 from email.mime import image
+from itertools import count
 from tkinter import *
+from tkinter import ttk
+from typing import Counter
 from PIL import ImageTk, Image
 import tkinter.messagebox
 from tkinter.tix import Select
+
+from pip import main
 import database_config
 import time
 
 #----------------------------------------------xjadi lgi image---------------------------------------
-load= Image.open("\Users\dmuhd\Pictures.png")
-render = ImageTk.PhotoImage(load)
-img = Label(root, image=render)
-img.place(x=100, y=100)
+Counter=1
+
+def changeimage():
+    image=[]
+    image.append(ImageTk.PhotoImage(image.open("logo-unimap.png")))
+    image.append(ImageTk.PhotoImage(image.open("maxresdefault.jpg")))
+    image.append(ImageTk.PhotoImage(image.open("istockphoto-1187225170-612x612.jpg")))
+    global Counter
+    Counter += 1
+    image_lable.configure(image=image[Counter%3])
+    image_lable.image=image[Counter%3]
+
+main_window = Tk()
+main_window.title("follow for more!")
+
+img= ImageTk.PhotoImage(image.open("C:\\Users\\dmuhd\\Pictures\\maxresdefault.jpg"))
+image_lable = Label(main_window,image=img)
+image_lable.pack()
+
+button= Button(main_window,text="tukar gambar",command=changeimage)
+button.pack()
 #--------------------------------------------------------------------------------------------------
 class journal:
 
