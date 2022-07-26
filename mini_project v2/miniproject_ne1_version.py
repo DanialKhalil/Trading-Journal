@@ -179,7 +179,7 @@ class journal:
         MainFrame.grid()
         img = ImageTk.PhotoImage(Image.open("cr.jpg"))
         imgTit = Label(MainFrame,anchor = NW ,image=img)
-        imgTit.grid(row=0, column=0)
+        imgTit.grid(row=2, column=2)
         imgTit.place(x=0, y=3)
         
 
