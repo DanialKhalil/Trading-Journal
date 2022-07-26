@@ -154,26 +154,33 @@ class journal:
         DataFrame.grid(row=1,column=0)
         DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=190,relief=RIDGE,bg="steel blue", font=('times new roman',36,'bold'),text="\tADD JOURNAL\n")
         DataFrameLEFT.pack(side=LEFT)
-        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=160, pady=3, relief=RIDGE,bg="steel blue",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
+        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=190, pady=3, relief=RIDGE,bg="steel blue",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
         DataFrameRIGHT.pack(side=RIGHT)
 
         
         # START FRAME DASHBOARDPERFOMANCE________________________________________________________________________
 
         FRAMEPERFOMANCE = LabelFrame(MainFrame, highlightbackground="snow", highlightthickness=1,text='DASH BOARDPERFOMANCE',bg='steel blue')
-        FRAMEPERFOMANCE.grid(row=3,column=0,padx=10)    # Frame for PERFOMANCE BOARDDASH
+        FRAMEPERFOMANCE.grid(row=1,column=0,padx=400)    # Frame for PERFOMANCE BOARDDASH
 
             #clock
         clock = Label(FRAMEPERFOMANCE, font=text_font, bg=background, fg=foreground, bd=border_width) 
         clock.pack()
 
             #total profit_______________________________________
-        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=50,font=25,bg='steel blue')
+        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=27,font=25,bg='steel blue')
         labelPROFIT.pack()
 
         data_totalprofit=database_config.sum()
-        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=50,font=25,bg='steel blue')
+        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='steel blue')
         label_d_PROFIT.pack()
+
+        MainFrame = Frame(root, bg="red", width=400, height=260)
+        MainFrame.grid()
+        img = ImageTk.PhotoImage(Image.open("cr.jpg"))
+        imgTit = Label(MainFrame,anchor = NW ,image=img)
+        imgTit.grid(row=0, column=0)
+        imgTit.place(x=0, y=3)
         
 
             #total loss_______________________________________
@@ -181,7 +188,7 @@ class journal:
         labelLOSS.pack()
 
         data_totalloss=database_config.sumofloss()
-        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=50,font=25,bg='steel blue')
+        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=27,font=25,bg='steel blue')
         label_d_loss.pack()
             #___________________________________________________
 
@@ -191,7 +198,7 @@ class journal:
         labelTPL.pack()
 
         data_totalprofit_loss=data_totalprofit-data_totalloss
-        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=50,font=25,bg='steel blue')
+        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=27,font=25,bg='steel blue')
         label_d_totalprofitloss.pack()
             #___________________________________________________
 
