@@ -15,27 +15,7 @@ import database_config
 import time
 
 #----------------------------------------------xjadi lgi image---------------------------------------
-Counter=1
 
-def changeimage():
-    image=[]
-    image.append(ImageTk.PhotoImage(image.open("logo-unimap.png")))
-    image.append(ImageTk.PhotoImage(image.open("maxresdefault.jpg")))
-    image.append(ImageTk.PhotoImage(image.open("istockphoto-1187225170-612x612.jpg")))
-    global Counter
-    Counter += 1
-    image_lable.configure(image=image[Counter%3])
-    image_lable.image=image[Counter%3]
-
-main_window = Tk()
-main_window.title("follow for more!")
-
-img= ImageTk.PhotoImage(image.open("C:\\Users\\dmuhd\\Pictures\\maxresdefault.jpg"))
-image_lable = Label(main_window,image=img)
-image_lable.pack()
-
-button= Button(main_window,text="tukar gambar",command=changeimage)
-button.pack()
 #--------------------------------------------------------------------------------------------------
 class journal:
 
@@ -174,7 +154,7 @@ class journal:
         DataFrame.grid(row=1,column=0)
         DataFrameLEFT = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=190,relief=RIDGE,bg="steel blue", font=('times new roman',36,'bold'),text="\tADD JOURNAL\n")
         DataFrameLEFT.pack(side=LEFT)
-        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=140, pady=3, relief=RIDGE,bg="steel blue",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
+        DataFrameRIGHT = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=160, pady=3, relief=RIDGE,bg="steel blue",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
         DataFrameRIGHT.pack(side=RIGHT)
 
         
@@ -226,42 +206,42 @@ class journal:
             #___________________________________________________
 
 #--------------------------------entries-------------------------------------------------------------------------------------------------
-        self.lblinstrument = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="INSTRUMENT:",padx=2,pady=2,bg="Ghost White")
+        self.lblinstrument = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="INSTRUMENT:",padx=2,pady=2,bg="steel blue")
         self.lblinstrument.grid(row=0,column=0,sticky=W)
         self.txtinstrument = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=instrument, width=39)
         self.txtinstrument.grid(row=0, column=1)
 
-        self.lblmarket_position = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="POSITION:", padx=2, pady=2,bg="Ghost White")
+        self.lblmarket_position = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="POSITION:", padx=2, pady=2,bg="steel blue")
         self.lblmarket_position.grid(row=1, column=0, sticky=W)
         self.txtmarket_position = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=market_position, width=39)
         self.txtmarket_position.grid(row=1, column=1)
 
-        self.lblLOT_SIZE = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="LOT_SIZE:", padx=2, pady=2,bg="Ghost White")
+        self.lblLOT_SIZE = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="LOT_SIZE:", padx=2, pady=2,bg="steel blue")
         self.lblLOT_SIZE.grid(row=2, column=0, sticky=W)
         self.txtLOT_SIZE = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=lot_size, width=39)
         self.txtLOT_SIZE.grid(row=2, column=1)
 
-        self.lblRISK = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="RISK:", padx=2, pady=2,bg="Ghost White")
+        self.lblRISK = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="RISK:", padx=2, pady=2,bg="steel blue")
         self.lblRISK.grid(row=3, column=0, sticky=W)
         self.txtRISK = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=risk, width=39)
         self.txtRISK.grid(row=3, column=1)
 
-        self.lblREWARD = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="REWARD:", padx=2, pady=2,bg="Ghost White")
+        self.lblREWARD = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="REWARD:", padx=2, pady=2,bg="steel blue")
         self.lblREWARD.grid(row=4, column=0, sticky=W)
         self.txtREWARD = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=reward, width=39)
         self.txtREWARD.grid(row=4, column=1)
 
-        self.lblPROFIT = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="PROFIT:", padx=2, pady=2,bg="Ghost White")
+        self.lblPROFIT = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="PROFIT:", padx=2, pady=2,bg="steel blue")
         self.lblPROFIT.grid(row=5, column=0, sticky=W)
         self.txtPROFIT = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=profit, width=39)
         self.txtPROFIT.grid(row=5, column=1)
 
-        self.lblLOSS = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="LOSS:", padx=2, pady=2,bg="Ghost White")
+        self.lblLOSS = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="LOSS:", padx=2, pady=2,bg="steel blue")
         self.lblLOSS.grid(row=6, column=0, sticky=W)
         self.txtLOSS = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=loss, width=39)
         self.txtLOSS.grid(row=6, column=1)
 
-        self.lblSETUP = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="SETUP:", padx=2, pady=2,bg="Ghost White")
+        self.lblSETUP = Label(DataFrameLEFT, font=('times new roman', 10, 'bold'), text="SETUP:", padx=2, pady=2,bg="steel blue")
         self.lblSETUP.grid(row=7, column=0, sticky=W)
         self.txtSETUP = Entry(DataFrameLEFT, font=('times new roman', 10, 'bold'), textvariable=setup, width=39)
         self.txtSETUP.grid(row=7, column=1)
