@@ -9,12 +9,9 @@ from typing import Counter
 from PIL import ImageTk, Image
 import tkinter.messagebox
 from tkinter.tix import Select
-
 from pip import main
 import database_config
 import time
-
-#----------------------------------------------xjadi lgi image---------------------------------------
 
 #--------------------------------------------------------------------------------------------------
 class journal:
@@ -174,15 +171,14 @@ class journal:
         data_totalprofit=database_config.sum()
         label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='steel blue')
         label_d_PROFIT.pack()
-
+#-------------------------------------GAMBAR------------------------------------------------------------------------------
         MainFrame = Frame(root, bg="red", width=400, height=260)
         MainFrame.grid()
-        img = ImageTk.PhotoImage(Image.open("cr.jpg"))
+        img = ImageTk.PhotoImage(Image.open("C:\\Users\\dmuhd\\Documents\\GitHub\\Trading-Journal\\cr.jpg"))
         imgTit = Label(MainFrame,anchor = NW ,image=img)
-        imgTit.grid(row=2, column=2)
-        imgTit.place(x=0, y=3)
+        imgTit.grid(row=1, column=1)
         
-
+#------------------------------------------------------------------------------------------------------------------------------------
             #total loss_______________________________________
         labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='steel blue')
         labelLOSS.pack()
