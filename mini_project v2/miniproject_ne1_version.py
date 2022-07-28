@@ -121,7 +121,7 @@ class journal:
                 tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
         # start clock config________________________________________
 
-        text_font= ("Boulder", 21, 'bold')
+        text_font= ("Boulder", 25, 'bold')
         background = "dodgerblue"
         foreground= "#363529"
         border_width = 2
