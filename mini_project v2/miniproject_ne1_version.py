@@ -16,7 +16,7 @@ class journal:
         self.root =root
         self.root.title("TRADING JOURNAL")
         self.root.geometry("1350x750+0+0")
-        self.root.iconbitmap('C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\download.ico')
+        #self.root.iconbitmap('C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\download.ico')
         self.root.config(bg="gray50")
         
         """image_0=Image.open("C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\jpg-vs-jpeg.jpg")
@@ -187,13 +187,15 @@ class journal:
         label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='steel blue')
         label_d_PROFIT.pack()
 #-------------------------------------GAMBAR------------------------------------------------------------------------------
+        """
+        
         GAMBAR = Frame(DataFrameright, bg="red", width=400, height=260)
         GAMBAR.pack(side=TOP)
         img = PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\PNG_transparency_demonstration_1.png")
         Labelgambar = ttk.Label(GAMBAR,image=img)
         PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\PNG_transparency_demonstration_1.png")
         Labelgambar.pack()
-        
+        """
 #------------------------------------------------------------------------------------------------------------------------------------
             #total loss_______________________________________
         labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='steel blue')
