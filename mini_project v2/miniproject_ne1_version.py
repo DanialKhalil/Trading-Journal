@@ -17,7 +17,7 @@ class journal:
         self.root.title("TRADING JOURNAL")
         self.root.geometry("1350x750+0+0")
         #self.root.iconbitmap('C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\download.ico')
-        self.root.config(bg="gray50")
+        self.root.config(bg="midnightblue")
         
         """image_0=Image.open("C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\jpg-vs-jpeg.jpg")
         back_end=ImageTk.PhotoImage(image_0)
@@ -121,10 +121,10 @@ class journal:
                 tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
         # start clock config________________________________________
 
-        text_font= ("Boulder", 18, 'bold')
-        background = "steel blue"
+        text_font= ("Boulder", 21, 'bold')
+        background = "dodgerblue"
         foreground= "#363529"
-        border_width = 1
+        border_width = 2
 
         def digital_clock(): 
             time_live = time.strftime("%H:%M:%S %p \n%A %x")
@@ -145,33 +145,33 @@ class journal:
             
 
 #--------------------------------------Frames-----------------------------------------------------------------------__________________________________________________________
-        MainFrame = Frame(self.root, bg="gray50")
+        MainFrame = Frame(self.root, bg="midnightblue")
         MainFrame.pack()
 
-        TitFrame = Frame(MainFrame, bd=2, padx=54,pady=8, bg="steel blue")
+        TitFrame = Frame(MainFrame, bd=2, padx=75,pady=8, bg="midnightblue")
         TitFrame.pack(side=TOP)
-        self.lblTit = Label(TitFrame ,font=('times new roman',48,'bold'),text="TRADING JOURNAL IKAN BILIS FX",bg="gray50")
+        self.lblTit = Label(TitFrame ,font=('times new roman',51,'bold'),text="TRADING JOURNAL IKAN BILIS FX",bg="midnightblue")
         self.lblTit.pack()
 
-        secondmain=Frame(MainFrame, bd=2, padx=54,pady=8, bg="steel blue")
+        secondmain=Frame(MainFrame, bd=2, padx=54,pady=8, bg="midnightblue")
         secondmain.pack(side=TOP)
         
-        DataFrame = Frame(secondmain, bd=1, width=1100, height=800, padx=2, pady=2,bg="gray50")
+        DataFrame = Frame(secondmain, bd=1, width=1100, height=800, padx=2, pady=2,bg="gray4")
         DataFrame.pack(side=LEFT)
 
-        DataFrametop = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=190,bg="steel blue", font=('times new roman',36,'bold'),text="\tADD JOURNAL\n")
+        DataFrametop = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=230,bg="royalblue4", font=('times new roman',41,'bold'),text="\tADD JOURNAL\n")
         DataFrametop.pack(side=TOP)
-        ButtonFrame =Frame(DataFrame,bd=2,width=1350,height=70,padx=19,pady=8,bg="gray50")
+        ButtonFrame =Frame(DataFrame,bd=2,width=1350,height=70,padx=60,pady=8,bg="royalblue4")
         ButtonFrame.pack(side=TOP)
-        DataFramebottom = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=190, pady=3,bg="steel blue",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
+        DataFramebottom = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=242, pady=3,bg="royalblue4",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
         DataFramebottom.pack(side=BOTTOM)
 
-        DataFrameright=Frame(secondmain,bd=1,width=1500,height=800,padx=2,pady=2,bg="gray50")
+        DataFrameright=Frame(secondmain,bd=1,width=1500,height=800,padx=2,pady=2,bg="gray4")
         DataFrameright.pack(side=RIGHT)
         
         # START FRAME DASHBOARDPERFOMANCE________________________________________________________________________
 
-        FRAMEPERFOMANCE = LabelFrame(DataFrameright, highlightbackground="snow", highlightthickness=1,text='DASH BOARDPERFOMANCE',bg='steel blue')
+        FRAMEPERFOMANCE = LabelFrame(DataFrameright, highlightbackground="gray4", highlightthickness=2,text='DASH BOARDPERFOMANCE',bg='royalblue4')
         FRAMEPERFOMANCE.pack(side=BOTTOM)   
          # Frame for PERFOMANCE BOARDDASH
 
@@ -180,11 +180,11 @@ class journal:
         clock.pack()
 
             #total profit_______________________________________
-        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=27,font=25,bg='steel blue')
+        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=27,font=25,bg='royalblue4')
         labelPROFIT.pack()
 
         data_totalprofit=database_config.sum()
-        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='steel blue')
+        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='royalblue4')
         label_d_PROFIT.pack()
 #-------------------------------------GAMBAR------------------------------------------------------------------------------
         """
@@ -198,71 +198,71 @@ class journal:
         """
 #------------------------------------------------------------------------------------------------------------------------------------
             #total loss_______________________________________
-        labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='steel blue')
+        labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='royalblue4')
         labelLOSS.pack()
 
         data_totalloss=database_config.sumofloss()
-        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=27,font=25,bg='steel blue')
+        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=27,font=25,bg='royalblue4')
         label_d_loss.pack()
             #___________________________________________________
 
 
             #total profit - loss_______________________________________
-        labelTPL=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT - LOSS ',font=25,bg='steel blue')
+        labelTPL=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT - LOSS ',font=25,bg='royalblue4')
         labelTPL.pack()
 
         data_totalprofit_loss=data_totalprofit-data_totalloss
-        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=27,font=25,bg='steel blue')
+        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=27,font=25,bg='royalblue4')
         label_d_totalprofitloss.pack()
             #___________________________________________________
 
 
-        SPACE=Label(FRAMEPERFOMANCE,text=" US DOLLAR $ ",font=('ARIAL',10),bg='steel blue')
+        SPACE=Label(FRAMEPERFOMANCE,text=" US DOLLAR $ ",font=('ARIAL',10),bg='royalblue4')
         SPACE.pack()
 
 
         comment='currency in USD'
-        label_comment=Label(FRAMEPERFOMANCE,text=comment)
+        label_comment=Label(FRAMEPERFOMANCE,text=comment,bg='dodgerblue')
         label_comment.pack(side=LEFT)
             #___________________________________________________
 
 #--------------------------------entries-------------------------------------------------------------------------------------------------
-        self.lblinstrument = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="INSTRUMENT:",padx=2,pady=2,bg="steel blue")
+        self.lblinstrument = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="INSTRUMENT:",padx=2,pady=2,bg="royalblue4")
         self.lblinstrument.grid(row=0,column=0,sticky=W)
         self.txtinstrument = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=instrument, width=39)
         self.txtinstrument.grid(row=0, column=1)
 
-        self.lblmarket_position = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="POSITION:", padx=2, pady=2,bg="steel blue")
+        self.lblmarket_position = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="POSITION:", padx=2, pady=2,bg="royalblue4")
         self.lblmarket_position.grid(row=1, column=0, sticky=W)
         self.txtmarket_position = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=market_position, width=39)
         self.txtmarket_position.grid(row=1, column=1)
 
-        self.lblLOT_SIZE = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="LOT_SIZE:", padx=2, pady=2,bg="steel blue")
+        self.lblLOT_SIZE = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="LOT_SIZE:", padx=2, pady=2,bg="royalblue4")
         self.lblLOT_SIZE.grid(row=2, column=0, sticky=W)
         self.txtLOT_SIZE = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=lot_size, width=39)
         self.txtLOT_SIZE.grid(row=2, column=1)
 
-        self.lblRISK = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="RISK:", padx=2, pady=2,bg="steel blue")
+        self.lblRISK = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="RISK:", padx=2, pady=2,bg="royalblue4")
         self.lblRISK.grid(row=3, column=0, sticky=W)
         self.txtRISK = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=risk, width=39)
         self.txtRISK.grid(row=3, column=1)
 
-        self.lblREWARD = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="REWARD:", padx=2, pady=2,bg="steel blue")
+        self.lblREWARD = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="REWARD:", padx=2, pady=2,bg="royalblue4")
         self.lblREWARD.grid(row=4, column=0, sticky=W)
         self.txtREWARD = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=reward, width=39)
         self.txtREWARD.grid(row=4, column=1)
 
-        self.lblPROFIT = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="PROFIT:", padx=2, pady=2,bg="steel blue")
+        self.lblPROFIT = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="PROFIT:", padx=2, pady=2,bg="royalblue4")
         self.lblPROFIT.grid(row=5, column=0, sticky=W)
         self.txtPROFIT = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=profit, width=39)
         self.txtPROFIT.grid(row=5, column=1)
 
-        self.lblLOSS = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="LOSS:", padx=2, pady=2,bg="steel blue")
+        self.lblLOSS = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="LOSS:", padx=2, pady=2,bg="royalblue4")
         self.lblLOSS.grid(row=6, column=0, sticky=W)
         self.txtLOSS = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=loss, width=39)
         self.txtLOSS.grid(row=6, column=1)
 
-        self.lblSETUP = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="SETUP:", padx=2, pady=2,bg="steel blue")
+        self.lblSETUP = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="SETUP:", padx=2, pady=2,bg="royalblue4")
         self.lblSETUP.grid(row=7, column=0, sticky=W)
         self.txtSETUP = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=setup, width=39)
         self.txtSETUP.grid(row=7, column=1)
