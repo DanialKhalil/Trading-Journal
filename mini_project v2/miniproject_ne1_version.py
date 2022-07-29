@@ -156,7 +156,7 @@ class journal:
         secondmain=Frame(MainFrame, bd=2, padx=54,pady=8, bg="midnightblue")
         secondmain.pack(side=TOP)
         
-        DataFrame = Frame(secondmain, bd=1, width=1100, height=800, padx=2, pady=2,bg="gray4")
+        DataFrame = Frame(secondmain, bd=1, width=1100, height=800, padx=2, pady=2,bg="midnightblue")
         DataFrame.pack(side=LEFT)
 
         DataFrametop = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=230,bg="royalblue4", font=('times new roman',41,'bold'),text="\tADD JOURNAL\n")
@@ -166,12 +166,12 @@ class journal:
         DataFramebottom = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=242, pady=3,bg="royalblue4",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
         DataFramebottom.pack(side=BOTTOM)
 
-        DataFrameright=Frame(secondmain,bd=1,width=1500,height=800,padx=2,pady=2,bg="gray4")
+        DataFrameright=Frame(secondmain,bd=1,width=1500,height=800,padx=2,pady=2,bg="midnightblue")
         DataFrameright.pack(side=RIGHT)
         
         # START FRAME DASHBOARDPERFOMANCE________________________________________________________________________
 
-        FRAMEPERFOMANCE = LabelFrame(DataFrameright, highlightbackground="gray4", highlightthickness=2,text='DASH BOARDPERFOMANCE',bg='royalblue4')
+        FRAMEPERFOMANCE = LabelFrame(DataFrameright, highlightbackground="midnightblue", highlightthickness=2,text='DASH BOARDPERFOMANCE',bg='royalblue4')
         FRAMEPERFOMANCE.pack(side=BOTTOM)   
          # Frame for PERFOMANCE BOARDDASH
 
@@ -208,7 +208,7 @@ class journal:
         labelLOSS.pack()
 
         data_totalloss=database_config.sumofloss()
-        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=27,font=25,bg='royalblue4')
+        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=36,font=30,bg='royalblue4')
         label_d_loss.pack()
             #___________________________________________________
 
