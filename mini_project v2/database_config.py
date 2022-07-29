@@ -33,7 +33,7 @@ def deleteRec(id):
 def searchData(instrument="", marketposition="", lotsize="",risk="", reward="", profit="", loss="", setup=""):
     con = sqlite3.connect("journal.db")
     cur = con.cursor()
-    cur.execute("SELECT * FROM journal WHERE instrument=? OR marketposition=? OR lotsize=? OR risk=? OR reward=? OR profit=? OR loss=? OR Mobile=?",(instrument, marketposition, lotsize , risk ,reward, profit, loss, setup))
+    cur.execute("SELECT * FROM journal WHERE instrument=? OR marketposition=? OR lotsize=? OR risk=? OR reward=? OR profit=? OR loss=? OR setup=?",(instrument, marketposition, lotsize , risk ,reward, profit, loss, setup))
     rows = cur.fetchall()
     con.close()
     return rows

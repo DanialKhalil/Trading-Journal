@@ -16,7 +16,7 @@ class journal:
         self.root =root
         self.root.title("TRADING JOURNAL")
         self.root.geometry("1350x750+0+0")
-        #self.root.iconbitmap('C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\download.ico')
+        self.root.iconbitmap('download.ico')
         self.root.config(bg="midnightblue")
         
         """image_0=Image.open("C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\jpg-vs-jpeg.jpg")
@@ -196,6 +196,12 @@ class journal:
         PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\PNG_transparency_demonstration_1.png")
         Labelgambar.pack()
         """
+        image=Image.open("jpg-vs-jpeg.jpg")
+        image=image.resize((400,440),Image.ANTIALIAS)
+        self.img=ImageTk.PhotoImage(image)
+        labelo=Label(DataFrameright,image=self.img,bd=4,relief=RIDGE)
+        #labelo.place(x=0,y=0,width=1550,height=100)
+        labelo.pack()
 #------------------------------------------------------------------------------------------------------------------------------------
             #total loss_______________________________________
         labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='royalblue4')
