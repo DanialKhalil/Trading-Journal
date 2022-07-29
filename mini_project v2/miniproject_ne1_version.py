@@ -5,7 +5,6 @@ from cgitb import text
 from heapq import nsmallest
 from tkinter import *
 from tkinter import ttk
-#from typing import Counter
 from PIL import ImageTk, Image
 import tkinter.messagebox
 import database_config
@@ -163,7 +162,7 @@ class journal:
         DataFrameright=LabelFrame(secondmain,bd=1,width=1500,height=800,padx=2,pady=2,bg="midnightblue")
         DataFrameright.pack(side=RIGHT)
         
-        # START FRAME DASHBOARDPERFOMANCE________________________________________________________________________
+        # START FRAME DASHBOARDPERFOMANCE__________________________
 
         FRAMEPERFOMANCE = LabelFrame(DataFrameright, highlightbackground="white", highlightthickness=2,text='DASH BOARDPERFOMANCE',font=('times new roman',18,'bold'),bg='white',bd=2,fg='black')
         FRAMEPERFOMANCE.pack(side=BOTTOM)   
@@ -173,7 +172,7 @@ class journal:
         clock = Label(FRAMEPERFOMANCE, font=text_font, bg=background, fg=foreground, bd=border_width) 
         clock.pack()
 
-            #total profit_______________________________________
+            #total profit_______________
         labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=27,font=25,bg='white')
         labelPROFIT.pack()
 
@@ -195,8 +194,7 @@ class journal:
         data_totalloss=database_config.sumofloss()
         label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=36,font=30,bg='white')
         label_d_loss.pack()
-            #___________________________________________________
-
+         
 
             #total profit - loss_______________________________________
         labelTPL=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT - LOSS ',font=25,bg='white')
@@ -205,9 +203,7 @@ class journal:
         data_totalprofit_loss=data_totalprofit-data_totalloss
         label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=27,font=25,bg='white')
         label_d_totalprofitloss.pack()
-            #___________________________________________________
-
-
+          
         SPACE=Label(FRAMEPERFOMANCE,text=" US DOLLAR $ ",font=('ARIAL',10),bg='white')
         SPACE.pack()
 
@@ -215,8 +211,7 @@ class journal:
         comment='currency in USD'
         label_comment=Label(FRAMEPERFOMANCE,text=comment,bg='dodgerblue')
         label_comment.pack(side=LEFT)
-            #___________________________________________________
-
+           
 #--------------------------------entries-------------------------------------------------------------------------------------------------
         entrywidth=57
         self.lblinstrument = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="INSTRUMENT:",padx=2,pady=2,bg="white")
