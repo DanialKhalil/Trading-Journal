@@ -4,14 +4,14 @@ import sqlite3
 def journalData():
     con=sqlite3.connect("journal.db")
     cur = con.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS journal(id INTEGER PRIMARY KEY,instrument text, marketposition text, lotsize text, risk text,reward text, profit text,loss text,setup text)")
+    cur.execute("CREATE TABLE IF NOT EXISTS journal(id INTEGER PRIMARY KEY,instrument text, marketposition text, lotsize text, risk text,reward text, profit text,loss text,setup text, time text)")
     con.commit()
     con.close()
 
-def addStdRec(instrument, marketposition, lotsize , risk ,reward, profit, loss, setup):
+def addStdRec(instrument, marketposition, lotsize , risk ,reward, profit, loss, setup,time):
     con = sqlite3.connect("journal.db")
     cur = con.cursor()
-    cur.execute("INSERT INTO journal VALUES (NULL,?,?,?,?,?,?,?,?) ", (instrument, marketposition, lotsize , risk ,reward, profit, loss, setup))
+    cur.execute("INSERT INTO journal VALUES (NULL,?,?,?,?,?,?,?,?,?) ", (instrument, marketposition, lotsize , risk ,reward, profit, loss, setup,time))
     con.commit()
     con.close()
     
@@ -30,10 +30,10 @@ def deleteRec(id):
     con.commit()
     con.close()
     
-def searchData(instrument="", marketposition="", lotsize="",risk="", reward="", profit="", loss="", setup=""):
+def searchData(instrument="", marketposition="", lotsize="",risk="", reward="", profit="", loss="", setup="",time=""):
     con = sqlite3.connect("journal.db")
     cur = con.cursor()
-    cur.execute("SELECT * FROM journal WHERE instrument=? OR marketposition=? OR lotsize=? OR risk=? OR reward=? OR profit=? OR loss=? OR setup=?",(instrument, marketposition, lotsize , risk ,reward, profit, loss, setup))
+    cur.execute("SELECT * FROM journal WHERE instrument=? OR marketposition=? OR lotsize=? OR risk=? OR reward=? OR profit=? OR loss=? OR setup=? OR time=?",(instrument, marketposition, lotsize , risk ,reward, profit, loss, setup,time))
     rows = cur.fetchall()
     con.close()
     return rows

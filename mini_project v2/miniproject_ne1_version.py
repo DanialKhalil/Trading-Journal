@@ -1,6 +1,8 @@
 #frontend
+from ast import Pass
 from cProfile import label
 from cgitb import text
+from heapq import nsmallest
 from tkinter import *
 from tkinter import ttk
 #from typing import Counter
@@ -16,8 +18,8 @@ class journal:
         self.root =root
         self.root.title("TRADING JOURNAL")
         self.root.geometry("1350x750+0+0")
-        self.root.iconbitmap('download.ico')
-        self.root.config(bg="midnightblue")
+        self.root.iconbitmap('icontradingjournal.ico')
+        #self.root.config(bg="midnightblue")
         
         """image_0=Image.open("C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\jpg-vs-jpeg.jpg")
         back_end=ImageTk.PhotoImage(image_0)
@@ -27,6 +29,13 @@ class journal:
         """bg=PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\l.jpg")
         self.my_label = label(root,image=bg)
         self.my_label.place(x=0,y=0,relWith=1,relheight=1)"""
+
+        image1=Image.open("jpg-vs-jpeg.jpg")
+        #image1=image.resize((400,440),Image.ANTIALIAS)
+        self.img=ImageTk.PhotoImage(image1)
+        labelo=Label(self.root,image=self.img,bd=4,relief=RIDGE)
+        labelo.place(x=0,y=0)
+        #labelo.pack()
 
         instrument = StringVar()
         market_position = StringVar()
@@ -62,9 +71,9 @@ class journal:
                 L=market_position.get()
                 if L.upper()=='BUY' or L.upper()=="SELL" :
                     if(len(instrument.get())!=0):
-                        database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get())
+                        database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get(),time.strftime("%H:%M:%S %p \n%A %x"))
                         journal.delete(0, END)
-                        journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
+                        journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get(),time.strftime("%H:%M:%S %p \n%A %x")))
                 else:
                     tkinter.messagebox.showerror(title="Warning!", message="input position only 'buy' or 'sell'")
             else :
@@ -106,7 +115,7 @@ class journal:
             reload()
         def searchDatabase():
             journal.delete(0,END)
-            for row in database_config.searchData(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get()):
+            for row in database_config.searchData(instrument.get(), market_position.get(), lot_size.get() , risk.get() ,reward.get(), profit.get(), loss.get(), setup.get(),None):
                 journal.insert(END, row, str(""))
             
         def update():
@@ -114,22 +123,24 @@ class journal:
                 if (len(market_position.get()) != 0):
                     database_config.deleteRec(sd[0])
                 if (len(market_position.get()) != 0):
-                    database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(),loss.get(), setup.get())
+                    database_config.addStdRec(instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(),loss.get(), setup.get(),time.strftime("%H:%M:%S %p \n%A %x"))
                     journal.delete(0, END)
-                    journal.insert(END, (instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get()))
+                    journal.insert(END, ('done update !!',instrument.get(), market_position.get(), lot_size.get(), risk.get(), reward.get(), profit.get(), loss.get(), setup.get(),time.strftime("%H:%M:%S %p \n%A %x")))
+                    clearData()
+                    tkinter.messagebox.showwarning(title="DONE", message="DONE UPDATE")
             else :
                 tkinter.messagebox.showwarning(title="Warning!", message="please fill all")
         # start clock config________________________________________
 
         text_font= ("Boulder", 25, 'bold')
-        background = "dodgerblue"
+        background = "white"
         foreground= "#363529"
         border_width = 2
 
         def digital_clock(): 
             time_live = time.strftime("%H:%M:%S %p \n%A %x")
             clock.config(text=time_live) 
-            clock.after(2000, digital_clock)
+            clock.after(1000, digital_clock)
 
         # END clock config________________________________________
 
@@ -145,33 +156,33 @@ class journal:
             
 
 #--------------------------------------Frames-----------------------------------------------------------------------__________________________________________________________
-        MainFrame = Frame(self.root, bg="midnightblue")
+        MainFrame = Frame(self.root, bg="lightskyblue")
         MainFrame.pack()
 
-        TitFrame = Frame(MainFrame, bd=2, padx=75,pady=8, bg="midnightblue")
+        TitFrame = LabelFrame(MainFrame, bd=5, padx=75,pady=2, bg="white")
         TitFrame.pack(side=TOP)
-        self.lblTit = Label(TitFrame ,font=('times new roman',51,'bold'),text="TRADING JOURNAL IKAN BILIS FX",bg="midnightblue")
+        self.lblTit = Label(TitFrame ,font=('times new roman',51,'bold'),text="TRADING JOURNAL IKAN BILIS FX",bg="white",fg='grey12')
         self.lblTit.pack()
 
-        secondmain=Frame(MainFrame, bd=2, padx=54,pady=8, bg="midnightblue")
+        secondmain=LabelFrame(MainFrame, bd=3, padx=54,pady=2, bg="lightskyblue")
         secondmain.pack(side=TOP)
         
-        DataFrame = Frame(secondmain, bd=1, width=1100, height=800, padx=2, pady=2,bg="midnightblue")
+        DataFrame = LabelFrame(secondmain, bd=5, width=1100, height=800, padx=2, pady=2,bg="white")
         DataFrame.pack(side=LEFT)
 
-        DataFrametop = LabelFrame(DataFrame, bd=1, width=450, height=300, padx=230,bg="royalblue4", font=('times new roman',41,'bold'),text="\tADD JOURNAL\n")
-        DataFrametop.pack(side=TOP)
-        ButtonFrame =Frame(DataFrame,bd=2,width=1350,height=70,padx=60,pady=8,bg="royalblue4")
-        ButtonFrame.pack(side=TOP)
-        DataFramebottom = LabelFrame(DataFrame, bd=1, width=400, height=250, padx=242, pady=3,bg="royalblue4",font=('times new roman',28,'bold'),text="\t\tJOURNAL\n")
-        DataFramebottom.pack(side=BOTTOM)
+        DataFrametop = LabelFrame(DataFrame, bd=3, width=450, height=300, padx=230,bg="white", font=('times new roman',28,'bold'),text="\tADD JOURNAL\n")
+        DataFrametop.pack(side=TOP,anchor=NW)
+        ButtonFrame =LabelFrame(DataFrame,bd=5,width=450,height=300,padx=60,pady=8,bg="white")
+        ButtonFrame.pack(side=TOP,anchor=NW)
+        DataFramebottom = LabelFrame(DataFrame, bd=5,width=450, height=400, padx=230,bg="white",font=('times new roman',28,'bold'),text="\tJOURNAL\n")
+        DataFramebottom.pack(side=TOP,anchor=NW)
 
-        DataFrameright=Frame(secondmain,bd=1,width=1500,height=800,padx=2,pady=2,bg="midnightblue")
+        DataFrameright=LabelFrame(secondmain,bd=1,width=1500,height=800,padx=2,pady=2,bg="midnightblue")
         DataFrameright.pack(side=RIGHT)
         
         # START FRAME DASHBOARDPERFOMANCE________________________________________________________________________
 
-        FRAMEPERFOMANCE = LabelFrame(DataFrameright, highlightbackground="midnightblue", highlightthickness=2,text='DASH BOARDPERFOMANCE',bg='royalblue4')
+        FRAMEPERFOMANCE = LabelFrame(DataFrameright, highlightbackground="white", highlightthickness=2,text='DASH BOARDPERFOMANCE',font=('times new roman',18,'bold'),bg='white',bd=2,fg='black')
         FRAMEPERFOMANCE.pack(side=BOTTOM)   
          # Frame for PERFOMANCE BOARDDASH
 
@@ -180,11 +191,11 @@ class journal:
         clock.pack()
 
             #total profit_______________________________________
-        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=27,font=25,bg='royalblue4')
+        labelPROFIT=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT',width=27,font=25,bg='white')
         labelPROFIT.pack()
 
         data_totalprofit=database_config.sum()
-        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='royalblue4')
+        label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='white')
         label_d_PROFIT.pack()
 #-------------------------------------GAMBAR------------------------------------------------------------------------------
         """
@@ -196,7 +207,7 @@ class journal:
         PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\PNG_transparency_demonstration_1.png")
         Labelgambar.pack()
         """
-        image=Image.open("jpg-vs-jpeg.jpg")
+        image=Image.open("TRADINGLOGO1.png")
         image=image.resize((400,440),Image.ANTIALIAS)
         self.img=ImageTk.PhotoImage(image)
         labelo=Label(DataFrameright,image=self.img,bd=4,relief=RIDGE)
@@ -204,26 +215,26 @@ class journal:
         labelo.pack()
 #------------------------------------------------------------------------------------------------------------------------------------
             #total loss_______________________________________
-        labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='royalblue4')
+        labelLOSS=Label(FRAMEPERFOMANCE,text='TOTAL LOSS',font=25,bg='white')
         labelLOSS.pack()
 
         data_totalloss=database_config.sumofloss()
-        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=36,font=30,bg='royalblue4')
+        label_d_loss=Label(FRAMEPERFOMANCE,text=data_totalloss,width=36,font=30,bg='white')
         label_d_loss.pack()
             #___________________________________________________
 
 
             #total profit - loss_______________________________________
-        labelTPL=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT - LOSS ',font=25,bg='royalblue4')
+        labelTPL=Label(FRAMEPERFOMANCE,text='TOTAL PROFIT - LOSS ',font=25,bg='white')
         labelTPL.pack()
 
         data_totalprofit_loss=data_totalprofit-data_totalloss
-        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=27,font=25,bg='royalblue4')
+        label_d_totalprofitloss=Label(FRAMEPERFOMANCE,text=data_totalprofit_loss,width=27,font=25,bg='white')
         label_d_totalprofitloss.pack()
             #___________________________________________________
 
 
-        SPACE=Label(FRAMEPERFOMANCE,text=" US DOLLAR $ ",font=('ARIAL',10),bg='royalblue4')
+        SPACE=Label(FRAMEPERFOMANCE,text=" US DOLLAR $ ",font=('ARIAL',10),bg='white')
         SPACE.pack()
 
 
@@ -233,76 +244,77 @@ class journal:
             #___________________________________________________
 
 #--------------------------------entries-------------------------------------------------------------------------------------------------
-        self.lblinstrument = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="INSTRUMENT:",padx=2,pady=2,bg="royalblue4")
+        entrywidth=57
+        self.lblinstrument = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="INSTRUMENT:",padx=2,pady=2,bg="white")
         self.lblinstrument.grid(row=0,column=0,sticky=W)
-        self.txtinstrument = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=instrument, width=39)
+        self.txtinstrument = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=instrument, width=entrywidth,bg='lightskyblue')
         self.txtinstrument.grid(row=0, column=1)
 
-        self.lblmarket_position = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="POSITION:", padx=2, pady=2,bg="royalblue4")
+        self.lblmarket_position = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="POSITION:", padx=2, pady=2,bg="white")
         self.lblmarket_position.grid(row=1, column=0, sticky=W)
-        self.txtmarket_position = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=market_position, width=39)
+        self.txtmarket_position = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=market_position, width=entrywidth,bg='lightskyblue')
         self.txtmarket_position.grid(row=1, column=1)
 
-        self.lblLOT_SIZE = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="LOT_SIZE:", padx=2, pady=2,bg="royalblue4")
+        self.lblLOT_SIZE = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="LOT_SIZE:", padx=2, pady=2,bg="white")
         self.lblLOT_SIZE.grid(row=2, column=0, sticky=W)
-        self.txtLOT_SIZE = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=lot_size, width=39)
+        self.txtLOT_SIZE = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=lot_size, width=entrywidth,bg='lightskyblue')
         self.txtLOT_SIZE.grid(row=2, column=1)
 
-        self.lblRISK = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="RISK:", padx=2, pady=2,bg="royalblue4")
+        self.lblRISK = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="RISK:", padx=2, pady=2,bg="white")
         self.lblRISK.grid(row=3, column=0, sticky=W)
-        self.txtRISK = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=risk, width=39)
+        self.txtRISK = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=risk, width=entrywidth,bg='lightskyblue')
         self.txtRISK.grid(row=3, column=1)
 
-        self.lblREWARD = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="REWARD:", padx=2, pady=2,bg="royalblue4")
+        self.lblREWARD = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="REWARD:", padx=2, pady=2,bg="white")
         self.lblREWARD.grid(row=4, column=0, sticky=W)
-        self.txtREWARD = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=reward, width=39)
+        self.txtREWARD = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=reward, width=entrywidth,bg='lightskyblue')
         self.txtREWARD.grid(row=4, column=1)
 
-        self.lblPROFIT = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="PROFIT:", padx=2, pady=2,bg="royalblue4")
+        self.lblPROFIT = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="PROFIT:", padx=2, pady=2,bg="white")
         self.lblPROFIT.grid(row=5, column=0, sticky=W)
-        self.txtPROFIT = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=profit, width=39)
+        self.txtPROFIT = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=profit, width=entrywidth,bg='lightskyblue')
         self.txtPROFIT.grid(row=5, column=1)
 
-        self.lblLOSS = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="LOSS:", padx=2, pady=2,bg="royalblue4")
+        self.lblLOSS = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="LOSS:", padx=2, pady=2,bg="white")
         self.lblLOSS.grid(row=6, column=0, sticky=W)
-        self.txtLOSS = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=loss, width=39)
+        self.txtLOSS = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=loss, width=entrywidth,bg='lightskyblue')
         self.txtLOSS.grid(row=6, column=1)
 
-        self.lblSETUP = Label(DataFrametop, font=('times new roman', 10, 'bold'), text="SETUP:", padx=2, pady=2,bg="royalblue4")
+        self.lblSETUP = Label(DataFrametop, font=('times new roman', 12, 'bold'), text="SETUP:", padx=2, pady=2,bg="white")
         self.lblSETUP.grid(row=7, column=0, sticky=W)
-        self.txtSETUP = Entry(DataFrametop, font=('times new roman', 10, 'bold'), textvariable=setup, width=39)
+        self.txtSETUP = Entry(DataFrametop, font=('times new roman', 12, 'bold'), textvariable=setup, width=entrywidth,bg='lightskyblue')
         self.txtSETUP.grid(row=7, column=1)
 #--------------------------------------scroll bar and list box----------------------------------------------------------------------------
         scrollbar= Scrollbar(DataFramebottom)
         scrollbar.grid(row=0,column=1,sticky='ns')
 
-        journal = Listbox(DataFramebottom, width=40, height=10, font=('times new roman', 12, 'bold'),yscrollcommand=scrollbar.set)
+        journal = Listbox(DataFramebottom, width=70, height=10, font=('times new roman', 12, 'bold'),yscrollcommand=scrollbar.set,bg='lightskyblue')
         journal.bind('<<ListboxSelect>>',JOURNALRec)
-        journal.grid(row=0, column=0, padx=2)
+        journal.grid(row=0, column=0,sticky=N)
         scrollbar.config(command=journal.yview)
 #--------------------------------------buttons-----------------------------------------------------------------------------------------------------------
-        self.btnAddData = Button(ButtonFrame, text="Add New", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4, command=addData)
+        self.btnAddData = Button(ButtonFrame, text="Add New", font=('times new roman', 10, 'bold'), height=1, width=14, bd=4, command=addData)
         self.btnAddData.grid(row=0, column =0)
 
-        self.btnDisplayData = Button(ButtonFrame, text="Display", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4, command=DisplayData)
+        self.btnDisplayData = Button(ButtonFrame, text="Display", font=('times new roman', 10, 'bold'), height=1, width=14, bd=4, command=DisplayData)
         self.btnDisplayData.grid(row=0, column=1)
 
-        self.btnClearData = Button(ButtonFrame, text="Clear", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4,command=clearData)
+        self.btnClearData = Button(ButtonFrame, text="Clear", font=('times new roman', 10, 'bold'), height=1, width=14, bd=4,command=clearData)
         self.btnClearData.grid(row=0, column=2)
 
-        self.btnDeleteData = Button(ButtonFrame, text="Delete", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4,command=DeleteData)
+        self.btnDeleteData = Button(ButtonFrame, text="Delete", font=('times new roman', 10, 'bold'), height=1, width=14, bd=4,command=DeleteData)
         self.btnDeleteData.grid(row=0, column=3)
 
-        self.btnSearchData = Button(ButtonFrame, text="Search", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4,command=searchDatabase)
+        self.btnSearchData = Button(ButtonFrame, text="Search", font=('times new roman', 10, 'bold'), height=1, width=14, bd=4,command=searchDatabase)
         self.btnSearchData.grid(row=0, column=4)
 
-        self.btnUpdateData = Button(ButtonFrame, text="Update", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4,command=update)
+        self.btnUpdateData = Button(ButtonFrame, text="Update", font=('times new roman', 10, 'bold'), height=1, width=14, bd=4,command=update)
         self.btnUpdateData.grid(row=0, column=5)
 
-        self.btnExit = Button(ButtonFrame, text="Exit", font=('times new roman', 10, 'bold'), height=1, width=10, bd=4, command=iExit)
+        self.btnExit = Button(ButtonFrame, text="Exit", font=('times new roman', 10, 'bold'), height=1, width=14, bd=4, command=iExit)
         self.btnExit.grid(row=0, column=6)
 
-        self.btnExit = Button(ButtonFrame, text="clear database", font=('times new roman', 10, 'bold'), height=1, width=15, bd=4, command=cleardatabase)
+        self.btnExit = Button(ButtonFrame, text="clear database", font=('times new roman', 10, 'bold'), height=1, width=18, bd=4, command=cleardatabase)
         self.btnExit.grid(row=0, column=7)
 
 
