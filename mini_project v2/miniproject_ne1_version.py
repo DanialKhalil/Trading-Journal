@@ -19,23 +19,6 @@ class journal:
         self.root.title("TRADING JOURNAL")
         self.root.geometry("1350x750+0+0")
         self.root.iconbitmap('icontradingjournal.ico')
-        #self.root.config(bg="midnightblue")
-        
-        """image_0=Image.open("C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\jpg-vs-jpeg.jpg")
-        back_end=ImageTk.PhotoImage(image_0)
-        labelo=Label(root,Image=back_end)
-        labelo.place(x=0,y=0)"""
-
-        """bg=PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\l.jpg")
-        self.my_label = label(root,image=bg)
-        self.my_label.place(x=0,y=0,relWith=1,relheight=1)"""
-
-        image1=Image.open("jpg-vs-jpeg.jpg")
-        #image1=image.resize((400,440),Image.ANTIALIAS)
-        self.img=ImageTk.PhotoImage(image1)
-        labelo=Label(self.root,image=self.img,bd=4,relief=RIDGE)
-        labelo.place(x=0,y=0)
-        #labelo.pack()
 
         instrument = StringVar()
         market_position = StringVar()
@@ -198,16 +181,7 @@ class journal:
         label_d_PROFIT=Label(FRAMEPERFOMANCE,text=data_totalprofit,width=27,font=25,bg='white')
         label_d_PROFIT.pack()
 #-------------------------------------GAMBAR------------------------------------------------------------------------------
-        """
-        
-        GAMBAR = Frame(DataFrameright, bg="red", width=400, height=260)
-        GAMBAR.pack(side=TOP)
-        img = PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\PNG_transparency_demonstration_1.png")
-        Labelgambar = ttk.Label(GAMBAR,image=img)
-        PhotoImage(file="C:\\Users\\MUHAMMAD IMAN\\Desktop\\SEM 2 UNIMAP\\NMT 12704 PROGRAMING\\miniproject programming\\Trading-Journal\\mini_project v2\\PNG_transparency_demonstration_1.png")
-        Labelgambar.pack()
-        """
-        image=Image.open("TRADINGLOGO1.png")
+        image=Image.open("TRADINGLOGO.png")
         image=image.resize((400,440),Image.ANTIALIAS)
         self.img=ImageTk.PhotoImage(image)
         labelo=Label(DataFrameright,image=self.img,bd=4,relief=RIDGE)
