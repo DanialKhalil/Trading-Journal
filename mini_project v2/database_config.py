@@ -56,7 +56,6 @@ def sum():
     print("The total score profit is:")
     print(my_result[0])
     x=my_result[0]
-    print(x)
     con.close()
     if x==None:
         return(0)
@@ -74,7 +73,6 @@ def sumofloss():
     print("The total score loss is :")
     print(my_result[0])
     x=my_result[0]
-    print(x)
     con.close()
     if x==None:
         return(0)
@@ -88,5 +86,3 @@ def cleardatabase ():
     con.commit()
 
 journalData()
-sum()
-sumofloss()
